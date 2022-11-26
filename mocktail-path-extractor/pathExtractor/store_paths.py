@@ -2,8 +2,10 @@ import os
 from filelock import FileLock
 
 def store_paths(label, file_name, datasetName, ast_paths, cfg_paths, cdg_paths, ddg_paths):
+    if not os.path.isdir(os.path.join("./2_processed", datasetName)):
+        os.makedirs(os.path.join("./2_processed", datasetName))
     with FileLock(os.path.join("./2_processed", datasetName, datasetName + ".txt.lock")):
-        with open(os.path.join("./2_processed", datasetName, datasetName + ".txt"), 'a', encoding="utf-8") as f:
+        with open(os.path.join("./2_processed", datasetName, datasetName + ".txt"), 'a+', encoding="utf-8") as f:
             # f.write("#" + str(i) + '\n')
             # label
             f.write("label:" + label + '\n')
