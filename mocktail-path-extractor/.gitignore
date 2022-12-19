@@ -4,3 +4,6 @@ Dataset
 processedDataset*
 *.ipynb
 *.json
+2_processed
+3_output
+.idea

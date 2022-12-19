@@ -164,6 +164,8 @@ def process(dataset_name, include_paths_l):
     # with mp.Pool(processes = numOfProcesses) as pool:
     #     pool.map(generate_dataset, ProcessArguments)
     ray.init(num_cpus=num_cpus)
+    # For debugging
+    # ray.init(local_mode=True)
     # , log_to_driver=False
     tasks_pre = [generate_dataset.remote(x) for x in ProcessArguments]
     ray.get(tasks_pre)

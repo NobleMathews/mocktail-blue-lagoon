@@ -1,6 +1,5 @@
 import networkx as nx
 from pathExtractor.utils import *
-import os
 from timeit import default_timer as timer
 
 timeout_duration = 120.0
@@ -12,7 +11,7 @@ def extract_ast_paths(ast_path, graph_name, maxLength=8, maxWidth=2, maxTreeSize
                       downSymbol='↓', labelPlaceholder='<SELF>', useParentheses=True):
     start = timer()
     try:
-        ast = nx.DiGraph(nx.drawing.nx_pydot.read_dot(ast_path))
+        ast = nx.DiGraph(nx.nx_agraph.read_dot(ast_path))
     except:
         return "", []
 
@@ -78,7 +77,7 @@ def extract_ast_paths(ast_path, graph_name, maxLength=8, maxWidth=2, maxTreeSize
 def extract_cfg_paths(cfg_path, graph_name,  source_nodes, splitToken=False, separator='|', upSymbol='↑', downSymbol='↓',
                       labelPlaceholder='<SELF>', useParentheses=True):
     try:
-        cfg = nx.DiGraph(nx.drawing.nx_pydot.read_dot(cfg_path))
+        cfg = nx.DiGraph(nx.nx_agraph.read_dot(cfg_path))
         # selected_nodes = []
         # for source in source_nodes:
         #     if source in cfg.nodes():
@@ -140,7 +139,7 @@ def traverse_cfg_paths(start, cfg, graph_name, node, path, Visited, start_token=
 def extract_cdg_paths(cdg_path, graph_name, splitToken=False, separator='|', upSymbol='↑', downSymbol='↓',
                       labelPlaceholder='<SELF>', useParentheses=True):
     try:
-        cdg = nx.DiGraph(nx.drawing.nx_pydot.read_dot(cdg_path))
+        cdg = nx.DiGraph(nx.nx_agraph.read_dot(cdg_path))
         root = min(cdg.nodes)
     except:
         return []
@@ -197,7 +196,7 @@ def traverse_cdg_paths(start, cdg, graph_name, node, path, Visited, start_token=
 def extract_ddg_paths(ddg_path, graph_name,  source="1000101", splitToken=False, separator='|', upSymbol='↑', downSymbol='↓',
                       labelPlaceholder='<SELF>', useParentheses=True):
     try:
-        ddg = nx.MultiDiGraph(nx.drawing.nx_pydot.read_dot(ddg_path))
+        ddg = nx.MultiDiGraph(nx.nx_agraph.read_dot(ddg_path))
         source = min(ddg.nodes)
     except:
         return []
