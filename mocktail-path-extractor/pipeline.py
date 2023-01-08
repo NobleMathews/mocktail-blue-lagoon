@@ -23,6 +23,8 @@ in_path = "./1_input"
 process_path = "./2_processed"
 output_dir = "./3_output"
 
+os.makedirs(process_path, exist_ok=True)
+
 # dot -Tpng 0-ast.dot -o 0-ast.png
 numOfProcesses = psutil.cpu_count()
 num_cpus = psutil.cpu_count(logical=False)
@@ -163,9 +165,11 @@ def process(dataset_name, include_paths_l):
     # # Start executing multiple processes.
     # with mp.Pool(processes = numOfProcesses) as pool:
     #     pool.map(generate_dataset, ProcessArguments)
-    ray.init(num_cpus=num_cpus)
+
+    # ray.init(num_cpus=num_cpus)
     # For debugging
-    # ray.init(local_mode=True)
+    ray.init(local_mode=True)
+
     # , log_to_driver=False
     tasks_pre = [generate_dataset.remote(x) for x in ProcessArguments]
     ray.get(tasks_pre)

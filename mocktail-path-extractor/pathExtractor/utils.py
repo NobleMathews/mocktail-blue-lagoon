@@ -15,8 +15,10 @@ def normalizeAst(ast, graph_name, postOrder, splitToken=False, separator='|', la
 def normalizeNode(graph, graph_name, node, splitToken=False, separator='|', labelPlaceholder='<SELF>',
                   useParentheses=True):
     checkers = list(graph.nodes(data="label"))
-    checker = [item[1] for item in checkers if item[0] == node][0]
-    attributes = str(checker)[2:-2].split(',')
+    old_checker = [item[1] for item in checkers if item[0] == node][0]
+    new_checker = old_checker.split("<SUB>")[0][1:-1]
+    # attributes = str(checker)[2:-2].split(',')
+    attributes = new_checker.split(',')
     attributes = [attr.strip() for attr in attributes]
 
     if len(attributes) > 1:
