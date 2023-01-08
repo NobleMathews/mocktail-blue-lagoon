@@ -123,6 +123,7 @@ def filter_paths(input_file, output_file, collate_file, include_paths, max_path_
     #     return
 
     total_valid_examples = 0
+    first_example = True
     with open(collate_file, 'a', encoding="utf-8") as cout:
         with open(output_file, 'a', encoding="utf-8") as fout:
             with open(input_file, 'r', encoding="utf-8") as fin:
@@ -138,20 +139,36 @@ def filter_paths(input_file, output_file, collate_file, include_paths, max_path_
 
                     valid_example = True
                     output = label
-                    if include_paths['ast']:
+                    if include_paths['ast'] and valid_example:
+                        if not ast_paths or ast_paths[0] == '':
+                            valid_example = False
                         output += (' ' + ' '.join(ast_paths))
                     if include_paths['cfg'] and valid_example:
+                        if not cfg_paths or cfg_paths[0] == '':
+                            valid_example = False
                         output += (' ' + ' '.join(cfg_paths))
                     if include_paths['cdg'] and valid_example:
+                        if not cdg_paths or cdg_paths[0] == '':
+                            valid_example = False
                         output += (' ' + ' '.join(cdg_paths))
                     if include_paths['ddg'] and valid_example:
+                        if not ddg_paths or ddg_paths[0] == '':
+                            valid_example = False
                         output += (' ' + ' '.join(ddg_paths))
-
-                    fout.write(output + '\n')
-                    # if outputType == "file":
-                    cout.write(output + '\n')
-                    if output.strip():
+                    if valid_example:
+                        if first_example:
+                            fout.write(output)
+                            cout.write(output)
+                            first_example = False
+                        else:
+                            fout.write('\n' + output)
+                            cout.write('\n' + output)
                         total_valid_examples += 1
+                        # fout.write(output + '\n')
+                        # # if outputType == "file":
+                        # cout.write(output + '\n')
+                        # if output.strip():
+                        #     total_valid_examples += 1
 
     print("Number of Valid Examples in {file}: {count}".format(file=output_file, count=total_valid_examples))
 
