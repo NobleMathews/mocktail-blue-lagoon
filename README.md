@@ -16,7 +16,7 @@
 ## Datasets
 ### Method Naming
 * Download and create raw datasets using [this](./scripts/clone_repos.py) script.
-* Download the processed datasets from [here](). Processed datasets are path-extracted versions of the raw datasets. They can be readily used to train the model.
+* Download the processed datasets from [here](https://archive.org/details/mocktail-dataset-method-naming_202302). Processed datasets are path-extracted versions of the raw datasets. They can be readily used to train the model.
 
 ### Program Classification and Clone Detection
 * Download the raw datasets from CodeXGlue's [repository](https://github.com/microsoft/CodeXGLUE/tree/main/Code-Code/Clone-detection-POJ-104#dataset).
