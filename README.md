@@ -1,4 +1,4 @@
-# <h1 align="center">**ACM TOSEM: Investigating Multiple Source Code Representations - An Empirical Study**</h1>
+# <h1 align="center">**Investigating Multiple Source Code Representations - An Empirical Study**</h1>
 # <h4 align="center">**Mocktail Version - Blue Lagoon**</h4>
 <hr/>
 <br/>
