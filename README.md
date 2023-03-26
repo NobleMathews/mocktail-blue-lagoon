@@ -9,7 +9,7 @@
   
   * D. Vagavolu, K. C. Swarna and S. Chimalakonda, "A Mocktail of Source Code Representations," *2021 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)*, 2021, pp. 1296-1300, doi: 10.1109/ASE51524.2021.9678551. [[IEEE Xplore]](https://ieeexplore.ieee.org/document/9678551)
   
-  * Dheeraj Vagavolu, Karthik Chandra Swarna, and Sridhar Chimalakonda. "A Mocktail of Source Code Representations." arXiv preprint arXiv:2106.10918 (2021) [[arXiv]](https://arxiv.org/abs/2106.10918)
+  * Dheeraj Vagavolu, Karthik Chandra Swarna, and Sridhar Chimalakonda. "On the Impact of Multiple Source Code Representations on Software Engineering Tasks - An Empirical Study" arXiv preprint arXiv:2106.10918 (2021) [[arXiv]](https://arxiv.org/abs/2106.10918)
 
 * Please find the README for both the ```Path Extractor``` tool and the ```Mocktail model``` in their respective folders.
 
